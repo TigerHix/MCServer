@@ -18,6 +18,21 @@
 
 
 
+static class cStringCheck
+{
+public:
+	cStringCheck(void)
+	{
+		AString test = "TestinG";
+		AString lower = StrToLower(test);  // MSVC calls the in-place version here, modifying test as well
+		printf("test = %s, lower = %s\n", test.c_str(), lower.c_str());
+	}
+} g_StringTest;
+
+
+
+
+
 AString & AppendVPrintf(AString & str, const char * format, va_list args)
 {
 	ASSERT(format != NULL);
